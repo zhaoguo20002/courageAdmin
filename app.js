@@ -2,6 +2,11 @@ var express = require('express');
 var config = require('./config/admin');
 
 var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+var agent = require('./app/agent');
+agent.init(io);
 
 //--------------------configure app----------------------
 var pub = __dirname + '/public';
@@ -38,12 +43,14 @@ app.on('error', function(err) {
 });
 
 app.get('/', function(req, resp) {
+	console.log('get /');
 	resp.render('index', config);
 });
 
 app.get('/module/:mname', function(req, resp) {
+    console.log('get /module/:mname');
 	resp.render(req.params.mname);
 });
 
-app.listen(7001);
+server.listen(7001);
 console.log('[AdminConsoleStart] visit http://0.0.0.0:7001');

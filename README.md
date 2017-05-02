@@ -12,3 +12,8 @@ node app.js
 ```
 
 open browser in your computer,and enjoy it 
+
+
+socket.io server
+
+ajax --> socket.io server --> master server

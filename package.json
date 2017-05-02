@@ -3,6 +3,12 @@
 	"version": "0.2.0",
 	"private": false,
 	"dependencies": {
+		"optimist": ">=0.6.0",
+		"cliff": ">=0.1.8",
+		"pomelo-admin": ">=1.0.0",
+		"pomelo-logger": ">=0.0.3",
+		"async": ">=0.1.0",
+		"socket.io": "1.7.2",
 		"express": "<4.0.0",
 		"ejs": ">=0.0.1"
 	}
