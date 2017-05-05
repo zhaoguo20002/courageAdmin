@@ -18,8 +18,6 @@ var init = function ($io) {
     //监听连接
     io.on('connection', function(socket){
         console.log('test '+socket.id);
-
-        socket.adminConnected = false;
         //注册信息
         socket.on('register',function (event) {
             //{"type":"client","id":"browser-1493706728889","username":"monitor","password":"monitor","md5":false}
@@ -52,13 +50,12 @@ var init = function ($io) {
             });
 
             client.on('close', function() {
-                socket.adminConnected = false;
-                //端口连接
-                client.socket.disconnect();
-                //websocket也断开
-                socket.disconnect();
                 socket.adminClient = null;
                 console.log('\ndisconnect from master');
+            });
+
+            client.on('error', function(err) {
+                console.error('socket is error');
             });
 
             //设置下admin客服端信息
@@ -76,7 +73,7 @@ var init = function ($io) {
             var reqId = event.reqId;
 
             //是否连接了admin
-            if(socket.adminConnected){
+            if(isConnected(socket)){
                 var client = socket.adminClient;
                 if (!!reqId) {
                     //发送请求
@@ -109,6 +106,18 @@ var init = function ($io) {
     });
 }
 
+/**
+ * 是否在连接中
+ * @param socket
+ * @returns {boolean}
+ */
+var isConnected = function (socket) {
+    var client = socket.adminClient;
+    if(client && client.socket.connected){
+        return true;
+    }
+    return false;
+}
 module.exports = {
     init:init
 };
