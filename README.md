@@ -17,3 +17,23 @@ open browser in your computer,and enjoy it
 socket.io server
 
 ajax --> socket.io server --> master server
+
+![参考图](pomelo-admin-web-arch.png)
+
+支持pomelo 2.2.5 版本
+
+配置文件
+```
+config/admin.json
+
+{
+	"host": "localhost",  //本机上就是 localhost 
+	"port": 7001,    
+	"username": "monitor",
+	"password": "monitor",
+	"adminhost": "localhost",  // pomelo服务器的master进程的服务器ip
+	"adminport": 3005,  // pomelo服务器的master进程的服务器端口
+	"adminusername": "monitor",
+	"adminpassword": "monitor"
+}
+```
