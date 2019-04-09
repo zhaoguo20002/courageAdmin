@@ -2,6 +2,9 @@
 	"name": "pomelo-admin-web",
 	"version": "0.2.0",
 	"private": false,
+	"scripts": {
+		"start": "node app.js"
+	},
 	"dependencies": {
 		"optimist": ">=0.6.0",
 		"cliff": ">=0.1.8",
