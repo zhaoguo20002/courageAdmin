@@ -79,7 +79,8 @@ setInterval(function() {
 					serverId : sid,
 					username : lists[i].username,
 					loginTime : new Date(lists[i].loginTime),
-					uid : lists[i].uid
+					uid : lists[i].uid,
+					occupation: lists[i].occupation
 				});
 			}
 		}	
